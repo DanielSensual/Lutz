@@ -21,8 +21,9 @@ export function BeforeAfterSlider({ beforeSrc, afterSrc, alt = "Before and after
         setPosition(percentage);
     }, []);
 
-    const handleMouseDown = () => {
+    const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
         isDragging.current = true;
+        handleMove(e.clientX);
     };
 
     const handleMouseUp = useCallback(() => {
@@ -39,8 +40,32 @@ export function BeforeAfterSlider({ beforeSrc, afterSrc, alt = "Before and after
         handleMove(e.touches[0].clientX);
     };
 
+    const handleTouchStart = (e: React.TouchEvent) => {
+        handleMove(e.touches[0].clientX);
+    };
+
     const handleClick = (e: React.MouseEvent) => {
         handleMove(e.clientX);
+    };
+
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+        const step = 5;
+        if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            setPosition((prev) => Math.max(5, prev - step));
+        }
+        if (e.key === 'ArrowRight') {
+            e.preventDefault();
+            setPosition((prev) => Math.min(95, prev + step));
+        }
+        if (e.key === 'Home') {
+            e.preventDefault();
+            setPosition(5);
+        }
+        if (e.key === 'End') {
+            e.preventDefault();
+            setPosition(95);
+        }
     };
 
     useEffect(() => {
@@ -57,12 +82,15 @@ export function BeforeAfterSlider({ beforeSrc, afterSrc, alt = "Before and after
             ref={containerRef}
             className="comparison-slider aspect-video w-full select-none"
             onMouseDown={handleMouseDown}
+            onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onClick={handleClick}
+            onKeyDown={handleKeyDown}
             role="slider"
             aria-valuenow={Math.round(position)}
-            aria-valuemin={0}
-            aria-valuemax={100}
+            aria-valuemin={5}
+            aria-valuemax={95}
+            aria-valuetext={`${Math.round(position)}% after`}
             aria-label={alt}
             tabIndex={0}
         >

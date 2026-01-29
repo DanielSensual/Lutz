@@ -26,6 +26,7 @@ export const PACKAGES: LUTPackage[] = [
         beforeImage: "/images/before-cinematic.jpg",
         afterImage: "/images/after-cinematic.jpg",
         demoVideoId: "oiahyp", // Using existing Streamable
+        stripeLink: process.env.NEXT_PUBLIC_STRIPE_CINEMATIC_ESSENTIALS,
     },
     {
         id: "miami-heat",
@@ -41,6 +42,7 @@ export const PACKAGES: LUTPackage[] = [
         beforeImage: "/images/before-miami.jpg",
         afterImage: "/images/after-miami.jpg",
         demoVideoId: "uls3qh",
+        stripeLink: process.env.NEXT_PUBLIC_STRIPE_MIAMI_HEAT,
     },
     {
         id: "moody-noir",
@@ -56,6 +58,7 @@ export const PACKAGES: LUTPackage[] = [
         beforeImage: "/images/before-noir.jpg",
         afterImage: "/images/after-noir.jpg",
         demoVideoId: "q3o595",
+        stripeLink: process.env.NEXT_PUBLIC_STRIPE_MOODY_NOIR,
     },
     {
         id: "clean-commercial",
@@ -71,5 +74,6 @@ export const PACKAGES: LUTPackage[] = [
         beforeImage: "/images/before-commercial.jpg",
         afterImage: "/images/after-commercial.jpg",
         demoVideoId: "57bmd5",
+        stripeLink: process.env.NEXT_PUBLIC_STRIPE_CLEAN_COMMERCIAL,
     },
 ];

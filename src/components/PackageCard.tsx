@@ -9,34 +9,47 @@ interface PackageCardProps {
 
 export function PackageCard({ pack }: PackageCardProps) {
     const [isPlaying, setIsPlaying] = useState(false);
-    const [isHovered, setIsHovered] = useState(false);
+    const thumbnailUrl = `https://cdn-cf-east.streamable.com/image/${pack.demoVideoId}.jpg?v=2`;
+    const videoUrl = `https://api-f.streamable.com/api/v1/videos/${pack.demoVideoId}/mp4`;
+    const canPurchase = Boolean(pack.stripeLink);
 
     return (
         <article
             className="card group"
-            onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => {
-                setIsHovered(false);
                 setIsPlaying(false);
             }}
         >
             {/* Video/Thumbnail Container */}
             <div className="relative aspect-[4/3] overflow-hidden bg-black">
                 {isPlaying ? (
-                    <video
-                        src={`https://api-f.streamable.com/api/v1/videos/${pack.demoVideoId}/mp4`}
-                        className="h-full w-full object-cover"
-                        autoPlay
-                        loop
-                        playsInline
-                        muted
-                    />
+                    <>
+                        <video
+                            src={videoUrl}
+                            className="h-full w-full object-cover"
+                            autoPlay
+                            loop
+                            playsInline
+                            muted
+                            preload="none"
+                            poster={thumbnailUrl}
+                        />
+                        <button
+                            type="button"
+                            onClick={() => setIsPlaying(false)}
+                            className="absolute right-3 top-3 z-20 grid h-9 w-9 place-items-center rounded-full bg-black/70 text-xs font-semibold text-white opacity-0 transition-opacity duration-300 hover:bg-black/80 group-hover:opacity-100 focus-visible:opacity-100"
+                            aria-label={`Stop preview for ${pack.name}`}
+                        >
+                            ✕
+                        </button>
+                    </>
                 ) : (
                     <>
                         <img
-                            src={`https://cdn-cf-east.streamable.com/image/${pack.demoVideoId}.jpg?v=2`}
+                            src={thumbnailUrl}
                             alt={pack.name}
                             className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                            loading="lazy"
                         />
                         {/* Dark Overlay */}
                         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
@@ -44,7 +57,8 @@ export function PackageCard({ pack }: PackageCardProps) {
                         {/* Play Button */}
                         <button
                             onClick={() => setIsPlaying(true)}
-                            className={`absolute inset-0 z-10 grid place-items-center transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-0'}`}
+                            type="button"
+                            className="absolute inset-0 z-10 grid place-items-center opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-within:opacity-100"
                             aria-label={`Preview ${pack.name}`}
                         >
                             <span className="grid h-14 w-14 place-items-center rounded-full bg-white text-lg font-bold text-[var(--bg)] shadow-2xl transition-transform duration-300 hover:scale-110">
@@ -83,15 +97,15 @@ export function PackageCard({ pack }: PackageCardProps) {
                 </ul>
 
                 {/* Buy Button */}
-                <button
-                    className="btn-primary mt-5 w-full text-sm"
-                    onClick={() => {
-                        // TODO: Replace with actual Stripe link
-                        alert('Stripe checkout coming soon!');
-                    }}
-                >
-                    Buy Now
-                </button>
+                {canPurchase ? (
+                    <a className="btn-primary mt-5 w-full text-sm" href={pack.stripeLink}>
+                        Buy Now
+                    </a>
+                ) : (
+                    <button className="btn-primary btn-disabled mt-5 w-full text-sm" type="button" disabled>
+                        Coming Soon
+                    </button>
+                )}
             </div>
         </article>
     );

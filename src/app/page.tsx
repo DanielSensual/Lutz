@@ -4,7 +4,7 @@ import { BeforeAfterSlider } from "@/components/BeforeAfterSlider";
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen">
+    <main id="main" className="relative min-h-screen">
       {/* Hero Section */}
       <section className="relative flex min-h-[90vh] flex-col items-center justify-center px-6 py-32 text-center">
         {/* Gradient Orb */}
