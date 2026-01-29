@@ -6,10 +6,23 @@ export default function Home() {
   return (
     <main id="main" className="relative min-h-screen">
       {/* Hero Section */}
-      <section className="relative flex min-h-[90vh] flex-col items-center justify-center px-6 py-32 text-center">
+      <section className="relative flex min-h-[90vh] flex-col items-center justify-center px-6 py-32 text-center overflow-hidden">
+        {/* Background Video */}
+        <video
+          src="/hero/banner.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 h-full w-full object-cover opacity-40"
+        />
+        {/* Dark Overlay Gradients */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-[var(--bg)]" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/20 to-black/40" />
+
         {/* Gradient Orb */}
         <div
-          className="pointer-events-none absolute top-0 left-1/2 h-[600px] w-[800px] opacity-40"
+          className="pointer-events-none absolute top-0 left-1/2 h-[600px] w-[800px] opacity-30"
           style={{
             background: 'radial-gradient(ellipse at center, rgba(255, 92, 43, 0.25) 0%, transparent 70%)',
             filter: 'blur(80px)',
@@ -23,15 +36,24 @@ export default function Home() {
             Professional Color Grading
           </div>
 
-          <h1 className="fade-up fade-up-delay-1 mt-8 text-5xl font-bold leading-[1.1] tracking-tight text-white sm:text-6xl md:text-7xl">
+          <h1 className="fade-up fade-up-delay-1 mt-8 text-5xl font-bold leading-[1.1] tracking-tight text-white sm:text-6xl md:text-7xl" style={{ textShadow: '0 4px 30px rgba(0, 0, 0, 0.8), 0 2px 10px rgba(0, 0, 0, 0.6)' }}>
             Cinematic Color.
             <br />
-            <span className="bg-gradient-to-r from-[var(--accent)] to-[var(--accent-bright)] bg-clip-text text-transparent">
+            <span
+              className="inline-block transition-all duration-300 cursor-default hover:drop-shadow-[0_0_30px_rgba(251,146,60,0.9)]"
+              style={{
+                background: 'linear-gradient(to right, #fb923c, #f97316, #facc15)',
+                WebkitBackgroundClip: 'text',
+                backgroundClip: 'text',
+                color: 'transparent',
+                textShadow: 'none',
+              }}
+            >
               Instant Results.
             </span>
           </h1>
 
-          <p className="fade-up fade-up-delay-2 mt-8 text-lg leading-relaxed text-[var(--muted)]">
+          <p className="fade-up fade-up-delay-2 mt-8 text-lg leading-relaxed text-white/90" style={{ textShadow: '0 2px 20px rgba(0, 0, 0, 0.7)' }}>
             Professional LUT packs designed for filmmakers and content creators. One-click color grading that makes your footage look like a movie.
           </p>
 
