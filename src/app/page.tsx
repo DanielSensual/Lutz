@@ -104,7 +104,7 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {PACKAGES.map((pack) => (
             <PackageCard key={pack.id} pack={pack} />
           ))}
@@ -149,6 +149,41 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Testimonial Section */}
+      <section className="container-center max-w-4xl px-6 py-32">
+        <div className="text-center">
+          <span className="section-label">Real Results</span>
+          <h2 className="section-title">What Creators Say</h2>
+          <p className="section-desc container-center">
+            Join hundreds of filmmakers using MediaGeekz LUTs to transform their footage.
+          </p>
+        </div>
+
+        {/* Video Testimonial */}
+        <div className="mt-14">
+          <div className="relative overflow-hidden rounded-2xl border border-white/[0.08] bg-black/40 shadow-2xl">
+            <div className="aspect-video">
+              <iframe
+                src="https://streamable.com/e/fk1lvr?autoplay=0&loop=0&muted=0&nocontrols=0"
+                className="h-full w-full"
+                allowFullScreen
+                allow="autoplay; fullscreen"
+              />
+            </div>
+            {/* Video Label */}
+            <div className="absolute left-4 top-4 z-10 flex items-center gap-2 rounded-full bg-black/60 px-3 py-1.5 backdrop-blur-sm">
+              <span className="h-2 w-2 rounded-full bg-[var(--accent)] animate-pulse" />
+              <span className="text-xs font-medium text-white">Video Testimonial</span>
+            </div>
+          </div>
+          {/* Client Attribution */}
+          <div className="mt-6 text-center">
+            <p className="text-base font-medium text-white">Erica Plazibat</p>
+            <p className="text-sm text-[var(--muted)]">Assistant Director, Quest Star</p>
+          </div>
+        </div>
+      </section>
+
       {/* Divider */}
       <div className="container-center max-w-xs">
         <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
@@ -157,27 +192,30 @@ export default function Home() {
       {/* FAQ Section */}
       <section className="container-center max-w-2xl px-6 py-32">
         <div className="text-center">
-          <span className="section-label">Got questions?</span>
-          <h2 className="section-title">FAQ</h2>
+          <span className="section-label">Have Questions?</span>
+          <h2 className="section-title">Frequently Asked</h2>
+          <p className="section-desc container-center">
+            Everything you need to know about our LUT packs.
+          </p>
         </div>
 
         <div className="mt-12 space-y-4">
           {[
             {
               q: "What software are these compatible with?",
-              a: "Our LUTs work with Premiere Pro, DaVinci Resolve, Final Cut Pro, After Effects, and any software that supports .cube files."
+              a: "Our LUTs work seamlessly with all major editing software including Premiere Pro, DaVinci Resolve, Final Cut Pro, After Effects, and any application that supports .cube files."
             },
             {
               q: "Will these work with my camera?",
-              a: "Yes! LUTs work with footage from any camera — iPhone, Sony, Canon, Blackmagic, RED, and more."
+              a: "Absolutely! LUTs are camera-agnostic and work beautifully with footage from any source — iPhone, Sony, Canon, Blackmagic, RED, and more."
             },
             {
               q: "Do I need technical skills to use LUTs?",
-              a: "Not at all. Simply import the .cube file into your editing software and apply it. We include step-by-step guides."
+              a: "Not at all. Simply drag and drop the .cube file into your editing software and apply it to your footage. Each pack includes step-by-step installation guides for every major platform."
             },
             {
               q: "Can I get a refund?",
-              a: "Due to the digital nature of these products, we don't offer refunds. Preview the demos before purchasing."
+              a: "Due to the digital nature of these products, we don't offer refunds once downloaded. We encourage you to preview all demos thoroughly before purchasing."
             }
           ].map((faq, i) => (
             <details key={i} className="group p-5">
