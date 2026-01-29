@@ -90,7 +90,7 @@ export default function Home() {
       </section>
 
       {/* What's Included Section */}
-      <section className="container-center max-w-4xl px-6 py-24">
+      <section className="container-center max-w-4xl px-6 py-32">
         <div className="glass-panel rounded-[var(--radius-lg)] p-10 sm:p-14">
           <div className="text-center">
             <span className="section-label">Every purchase includes</span>
@@ -127,8 +127,13 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Divider */}
+      <div className="container-center max-w-xs">
+        <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+      </div>
+
       {/* FAQ Section */}
-      <section className="container-center max-w-2xl px-6 py-24">
+      <section className="container-center max-w-2xl px-6 py-32">
         <div className="text-center">
           <span className="section-label">Got questions?</span>
           <h2 className="section-title">FAQ</h2>
@@ -169,7 +174,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-white/[0.06] px-6 py-16 text-center">
+      <footer className="mt-16 border-t border-white/[0.06] px-6 py-20 text-center">
         <div className="container-center max-w-md">
           <p className="text-2xl font-semibold text-white">
             Ready to elevate your footage?
