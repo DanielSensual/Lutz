@@ -14,11 +14,11 @@ export default function Home() {
           loop
           muted
           playsInline
-          className="absolute inset-0 h-full w-full object-cover opacity-40"
+          className="absolute inset-0 h-full w-full object-cover opacity-55"
         />
         {/* Dark Overlay Gradients */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-[var(--bg)]" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/20 to-black/40" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/40 to-[var(--bg)]" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-black/15 to-black/30" />
 
         {/* Gradient Orb */}
         <div
