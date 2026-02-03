@@ -37,6 +37,11 @@ export const metadata: Metadata = {
     description: "Professional LUT packs and cinematic color grading presets for Premiere Pro, DaVinci Resolve, and Final Cut Pro. Transform your footage instantly.",
     images: ["/og"],
   },
+  verification: {
+    other: {
+      'msvalidate.01': '9773A1790F85EB5ECA06D86D9C9E00A7'
+    }
+  }
 };
 
 export default function RootLayout({
