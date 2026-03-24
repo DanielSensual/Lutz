@@ -1,79 +1,72 @@
 export interface LUTPackage {
     id: string;
     name: string;
+    tagline: string;
     description: string;
     price: number;
     features: string[];
+    technicalDetails: string[];
     beforeImage: string;
     afterImage: string;
-    // Using Streamable videos from MediaGeekz as demo content
     demoVideoId: string;
+    cubeFile: string;
     stripeLink?: string;
+    accentColor: string;
 }
 
 export const PACKAGES: LUTPackage[] = [
     {
-        id: "cinematic-essentials",
-        name: "Cinematic Essentials",
-        description: "The foundation of any professional grade. Warm shadows, smooth highlights, and that unmistakable film look.",
+        id: "mediageekz-punchy",
+        name: "Mediageekz Punchy",
+        tagline: "Bold. Vibrant. Cinematic.",
+        description: "High-contrast cinematic grading with rich, saturated colors and deep shadows. Designed for narrative filmmaking, music videos, and premium content that demands attention.",
         price: 49,
         features: [
-            "15 .cube LUT files",
-            "Premiere Pro, DaVinci, FCPX compatible",
+            ".CUBE format (33×33×33)",
+            "Premiere Pro, DaVinci, FCPX",
+            "Optimized for S-Log3 & V-Log",
+            "Skin tone protection built-in",
             "Installation guide included",
             "Lifetime updates"
         ],
-        beforeImage: "/images/before-cinematic.jpg",
-        afterImage: "/images/after-cinematic.jpg",
-        demoVideoId: "oiahyp", // Using existing Streamable
-        stripeLink: process.env.NEXT_PUBLIC_STRIPE_CINEMATIC_ESSENTIALS,
+        technicalDetails: [
+            "Input: S-Log3, V-Log, C-Log",
+            "Output: Rec.709 (punched)",
+            "Contrast curve: Custom S-curve",
+            "Saturation: +15% selective boost"
+        ],
+        beforeImage: "/images/before-punchy.jpg",
+        afterImage: "/images/after-punchy.jpg",
+        demoVideoId: "oiahyp",
+        cubeFile: "/luts/mediageekz-punchy.cube",
+        stripeLink: process.env.NEXT_PUBLIC_STRIPE_PUNCHY,
+        accentColor: "#ff5c2b",
     },
     {
-        id: "miami-heat",
-        name: "Miami Heat",
-        description: "Vibrant teal and orange tones inspired by tropical sunsets. Perfect for travel, lifestyle, and summer content.",
+        id: "mediageekz-neutral",
+        name: "Mediageekz Neutral",
+        tagline: "Clean Base. True Color.",
+        description: "A precise Slog3 to Rec.709 base conversion that delivers natural, broadcast-ready color. The perfect starting point before adding your own creative grade on top.",
         price: 49,
         features: [
-            "12 .cube LUT files",
-            "Optimized for outdoor footage",
-            "Works with any camera",
-            "Color matching guide"
+            ".CUBE format (33×33×33)",
+            "Premiere Pro, DaVinci, FCPX",
+            "Sony S-Log3 → Rec.709",
+            "Accurate white balance mapping",
+            "Installation guide included",
+            "Lifetime updates"
         ],
-        beforeImage: "/images/before-miami.jpg",
-        afterImage: "/images/after-miami.jpg",
+        technicalDetails: [
+            "Input: Sony S-Log3 / S-Gamut3.Cine",
+            "Output: Rec.709 (neutral)",
+            "Gamma: Standard broadcast curve",
+            "Color science: ACES-informed mapping"
+        ],
+        beforeImage: "/images/before-neutral.jpg",
+        afterImage: "/images/after-neutral.jpg",
         demoVideoId: "uls3qh",
-        stripeLink: process.env.NEXT_PUBLIC_STRIPE_MIAMI_HEAT,
-    },
-    {
-        id: "moody-noir",
-        name: "Moody Noir",
-        description: "Desaturated tones with lifted blacks and dramatic contrast. For dark, atmospheric storytelling.",
-        price: 49,
-        features: [
-            "10 .cube LUT files",
-            "Low-light optimized",
-            "Includes LOG conversions",
-            "Dark theme presets"
-        ],
-        beforeImage: "/images/before-noir.jpg",
-        afterImage: "/images/after-noir.jpg",
-        demoVideoId: "q3o595",
-        stripeLink: process.env.NEXT_PUBLIC_STRIPE_MOODY_NOIR,
-    },
-    {
-        id: "clean-commercial",
-        name: "Clean Commercial",
-        description: "Bright, punchy, and professional. The go-to for corporate videos, product shoots, and branded content.",
-        price: 49,
-        features: [
-            "18 .cube LUT files",
-            "Skin tone protection",
-            "White balance correction",
-            "Versatile for any brand"
-        ],
-        beforeImage: "/images/before-commercial.jpg",
-        afterImage: "/images/after-commercial.jpg",
-        demoVideoId: "57bmd5",
-        stripeLink: process.env.NEXT_PUBLIC_STRIPE_CLEAN_COMMERCIAL,
+        cubeFile: "/luts/mediageekz-neutral.cube",
+        stripeLink: process.env.NEXT_PUBLIC_STRIPE_NEUTRAL,
+        accentColor: "#3b82f6",
     },
 ];

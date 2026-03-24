@@ -1,6 +1,6 @@
 import { PACKAGES } from "@/data/packages";
 import { PackageCard } from "@/components/PackageCard";
-import { BeforeAfterSlider } from "@/components/BeforeAfterSlider";
+import { LutPreviewEngine } from "@/components/LutPreviewEngine";
 
 export default function Home() {
   return (
@@ -33,11 +33,11 @@ export default function Home() {
         <div className="relative z-10 container-center max-w-3xl px-6">
           {/* Badge */}
           <div className="fade-up inline-block rounded-full bg-[var(--accent-soft)] px-5 py-2.5 text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-[var(--accent-bright)]">
-            Professional Color Grading
+            Professional Color Grading by MediaGeekz
           </div>
 
           <h1 className="fade-up fade-up-delay-1 mt-8 text-5xl font-bold leading-[1.1] tracking-tight text-white sm:text-6xl md:text-7xl" style={{ textShadow: '0 4px 30px rgba(0, 0, 0, 0.8), 0 2px 10px rgba(0, 0, 0, 0.6)' }}>
-            Cinematic Color.
+            Two Looks.
             <br />
             <span
               className="inline-block transition-all duration-300 cursor-default hover:drop-shadow-[0_0_30px_rgba(251,146,60,0.9)]"
@@ -49,20 +49,20 @@ export default function Home() {
                 textShadow: 'none',
               }}
             >
-              Instant Results.
+              Infinite Possibilities.
             </span>
           </h1>
 
           <p className="fade-up fade-up-delay-2 mt-8 text-lg leading-relaxed text-white/90" style={{ textShadow: '0 2px 20px rgba(0, 0, 0, 0.7)' }}>
-            Professional LUT packs designed for filmmakers and content creators. One-click color grading that makes your footage look like a movie.
+            <strong>Mediageekz Punchy</strong> for bold cinematic color and <strong>Mediageekz Neutral</strong> for clean Slog3→709 conversion. Try them on your own footage — right in the browser.
           </p>
 
           <div className="fade-up fade-up-delay-3 mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <a href="#packages" className="btn-primary">
-              Browse Packs — $49 each
+              See the LUTs — $49 each
             </a>
-            <a href="#demo" className="btn-secondary">
-              See the Difference
+            <a href="#try-it" className="btn-secondary">
+              Try on Your Footage
             </a>
           </div>
         </div>
@@ -75,39 +75,83 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Before/After Demo Section */}
-      <section id="demo" className="container-center max-w-4xl px-6 py-24">
+      {/* Packages Section — 2 Cards */}
+      <section id="packages" className="container-center max-w-5xl px-6 py-24">
         <div className="text-center">
-          <span className="section-label">Drag to compare</span>
-          <h2 className="section-title">See the Transformation</h2>
+          <span className="section-label">Choose Your Grade</span>
+          <h2 className="section-title">Two LUTs. Crafted for Filmmakers.</h2>
           <p className="section-desc container-center">
-            Our LUTs enhance your footage while preserving natural skin tones and details.
+            Each LUT is hand-tuned by the MediaGeekz color team. Whether you need punchy cinematic impact or a clean broadcast base — we&apos;ve got you covered.
+          </p>
+        </div>
+
+        <div className="mt-14 grid gap-8 sm:grid-cols-2 max-w-4xl container-center">
+          {PACKAGES.map((pack) => (
+            <PackageCard key={pack.id} pack={pack} />
+          ))}
+        </div>
+      </section>
+
+      {/* Try It — LUT Preview Engine */}
+      <section id="try-it" className="container-center max-w-5xl px-6 py-24">
+        <div className="text-center">
+          <span className="section-label">Try Before You Buy</span>
+          <h2 className="section-title">Preview on Your Own Footage</h2>
+          <p className="section-desc container-center">
+            Upload a short clip and see exactly how our LUTs transform your footage — all processed right in your browser. Nothing gets uploaded to any server.
           </p>
         </div>
 
         <div className="mt-14">
-          <BeforeAfterSlider
-            beforeSrc="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=675&fit=crop&sat=-100"
-            afterSrc="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=675&fit=crop"
-            alt="Before and after LUT comparison"
-          />
+          <LutPreviewEngine />
         </div>
       </section>
 
-      {/* Packages Section */}
-      <section id="packages" className="container-center max-w-6xl px-6 py-24">
+      {/* About Our LUTs — Technical Section */}
+      <section className="container-center max-w-4xl px-6 py-24">
         <div className="text-center">
-          <span className="section-label">All packs $49</span>
-          <h2 className="section-title">Choose Your Look</h2>
-          <p className="section-desc container-center">
-            Each pack is crafted for a specific mood. Find the one that matches your creative vision.
-          </p>
+          <span className="section-label">The Technical Details</span>
+          <h2 className="section-title">Built for Professional Workflows</h2>
         </div>
 
-        <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {PACKAGES.map((pack) => (
-            <PackageCard key={pack.id} pack={pack} />
-          ))}
+        <div className="mt-14 grid gap-8 sm:grid-cols-2">
+          {/* Punchy */}
+          <div className="glass-panel rounded-[var(--radius-lg)] p-8">
+            <div className="flex items-center gap-3 mb-6">
+              <span className="h-3 w-3 rounded-full" style={{ background: '#ff5c2b' }} />
+              <h3 className="text-lg font-bold text-white">Mediageekz Punchy</h3>
+            </div>
+            <p className="text-sm leading-relaxed text-[var(--muted)] mb-6">
+              A custom S-curve contrast with selective saturation boost. Designed for narrative filmmaking, music videos, and premium content. Shadows are deep and rich, highlights roll off naturally, and skin tones are protected through the entire pipeline.
+            </p>
+            <div className="space-y-2">
+              {['Input: S-Log3, V-Log, C-Log', 'Output: Rec.709 (punched)', 'Custom S-curve contrast', 'Selective saturation boost (+15%)'].map((item, i) => (
+                <div key={i} className="flex items-center gap-2 text-xs text-[var(--muted)]">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#ff5c2b]" />
+                  <span className="font-mono">{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Neutral */}
+          <div className="glass-panel rounded-[var(--radius-lg)] p-8">
+            <div className="flex items-center gap-3 mb-6">
+              <span className="h-3 w-3 rounded-full" style={{ background: '#3b82f6' }} />
+              <h3 className="text-lg font-bold text-white">Mediageekz Neutral</h3>
+            </div>
+            <p className="text-sm leading-relaxed text-[var(--muted)] mb-6">
+              A precise base conversion from Sony S-Log3 / S-Gamut3.Cine to Rec.709. Delivers natural, broadcast-ready color with accurate white balance mapping. The perfect starting point before adding your own creative grade.
+            </p>
+            <div className="space-y-2">
+              {['Input: Sony S-Log3 / S-Gamut3.Cine', 'Output: Rec.709 (neutral)', 'Standard broadcast gamma curve', 'ACES-informed color mapping'].map((item, i) => (
+                <div key={i} className="flex items-center gap-2 text-xs text-[var(--muted)]">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#3b82f6]" />
+                  <span className="font-mono">{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
@@ -123,18 +167,18 @@ export default function Home() {
             {[
               {
                 icon: "📦",
-                title: ".CUBE Files",
-                desc: "Industry-standard format compatible with all major software."
+                title: ".CUBE Files (33×33×33)",
+                desc: "Industry-standard 3D LUT format compatible with all major editing software."
               },
               {
                 icon: "📖",
                 title: "Install Guide",
-                desc: "Step-by-step tutorials for Premiere, Resolve, and FCPX."
+                desc: "Step-by-step setup for Premiere Pro, DaVinci Resolve, and Final Cut Pro."
               },
               {
                 icon: "♾️",
                 title: "Lifetime Access",
-                desc: "Download anytime. Free updates included."
+                desc: "Download anytime. Free updates as we refine the color science."
               }
             ].map((item, i) => (
               <div key={i} className="text-center">
@@ -155,7 +199,7 @@ export default function Home() {
           <span className="section-label">Real Results</span>
           <h2 className="section-title">What Creators Say</h2>
           <p className="section-desc container-center">
-            Join hundreds of filmmakers using MediaGeekz LUTs to transform their footage.
+            Join filmmakers using MediaGeekz LUTs to transform their footage.
           </p>
         </div>
 
@@ -194,28 +238,33 @@ export default function Home() {
         <div className="text-center">
           <span className="section-label">Have Questions?</span>
           <h2 className="section-title">Frequently Asked</h2>
-          <p className="section-desc container-center">
-            Everything you need to know about our LUT packs.
-          </p>
         </div>
 
         <div className="mt-12 space-y-4">
           {[
             {
+              q: "What's the difference between Punchy and Neutral?",
+              a: "Mediageekz Punchy delivers a stylized cinematic grade with enhanced contrast and saturation — perfect for music videos, narrative content, and social media. Mediageekz Neutral is a clean Slog3 to Rec.709 base conversion that gives you broadcast-ready color as a starting point for your own creative grade."
+            },
+            {
+              q: "Do I need to shoot in S-Log3?",
+              a: "The LUTs are optimized for Sony S-Log3 footage, but they also work beautifully with V-Log (Panasonic), C-Log (Canon), and even standard Rec.709 footage. Results will always look best with LOG-format input."
+            },
+            {
               q: "What software are these compatible with?",
-              a: "Our LUTs work seamlessly with all major editing software including Premiere Pro, DaVinci Resolve, Final Cut Pro, After Effects, and any application that supports .cube files."
+              a: "Both LUTs are standard .CUBE format (33×33×33) and work with Premiere Pro, DaVinci Resolve, Final Cut Pro, After Effects, and any application that supports .cube files."
+            },
+            {
+              q: "How does the in-browser preview work?",
+              a: "We use FFmpeg WebAssembly to process your video entirely on your device. Your footage never leaves your computer — it's 100% private. Just upload a short clip, pick a LUT, and see the result in seconds."
             },
             {
               q: "Will these work with my camera?",
-              a: "Absolutely! LUTs are camera-agnostic and work beautifully with footage from any source — iPhone, Sony, Canon, Blackmagic, RED, and more."
-            },
-            {
-              q: "Do I need technical skills to use LUTs?",
-              a: "Not at all. Simply drag and drop the .cube file into your editing software and apply it to your footage. Each pack includes step-by-step installation guides for every major platform."
+              a: "Yes! LUTs are camera-agnostic. They work with footage from Sony, Canon, Panasonic, Blackmagic, RED, iPhone, and any other source. For best results, shoot in a LOG profile."
             },
             {
               q: "Can I get a refund?",
-              a: "Due to the digital nature of these products, we don't offer refunds once downloaded. We encourage you to preview all demos thoroughly before purchasing."
+              a: "Due to the digital nature of these products, we don't offer refunds once downloaded. That's exactly why we built the in-browser preview — so you can try them on your own footage before buying."
             }
           ].map((faq, i) => (
             <details key={i} className="group p-5">
@@ -240,7 +289,7 @@ export default function Home() {
             Ready to elevate your footage?
           </p>
           <a href="#packages" className="btn-primary mt-6 inline-flex">
-            Get Started — $49
+            Get Your LUTs — $49
           </a>
         </div>
         <div className="mt-12 space-y-2">

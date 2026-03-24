@@ -10,15 +10,15 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://luts.mediageekz.com"),
-  title: "LUTs by MediaGeekz | Cinematic Color Grading Packs",
-  description: "Professional LUT packs and cinematic color grading presets for Premiere Pro, DaVinci Resolve, and Final Cut Pro. Transform your footage instantly.",
-  keywords: ["LUTs", "color grading", "video editing", "cinematic", "Premiere Pro", "DaVinci Resolve"],
+  title: "MediaGeekz LUTs | Punchy & Neutral — Cinematic Color Grading",
+  description: "Two professional LUTs by MediaGeekz: Punchy for bold cinematic color and Neutral for clean Slog3 to Rec.709 conversion. Try them on your footage in-browser before you buy.",
+  keywords: ["LUTs", "color grading", "Slog3 to Rec709", "cinematic LUT", "Premiere Pro", "DaVinci Resolve", "Final Cut Pro", "MediaGeekz"],
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "LUTs by MediaGeekz | Cinematic Color Grading Packs",
-    description: "Professional LUT packs and cinematic color grading presets for Premiere Pro, DaVinci Resolve, and Final Cut Pro. Transform your footage instantly.",
+    title: "MediaGeekz LUTs | Punchy & Neutral — Cinematic Color Grading",
+    description: "Two professional LUTs by MediaGeekz: Punchy for bold cinematic color and Neutral for clean Slog3 to Rec.709 conversion. Try them on your footage in-browser.",
     url: "https://luts.mediageekz.com",
     siteName: "MediaGeekz LUTs",
     type: "website",
@@ -27,14 +27,14 @@ export const metadata: Metadata = {
         url: "/og",
         width: 1200,
         height: 630,
-        alt: "MediaGeekz LUT packs preview",
+        alt: "MediaGeekz Punchy and Neutral LUTs preview",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "LUTs by MediaGeekz | Cinematic Color Grading Packs",
-    description: "Professional LUT packs and cinematic color grading presets for Premiere Pro, DaVinci Resolve, and Final Cut Pro. Transform your footage instantly.",
+    title: "MediaGeekz LUTs | Punchy & Neutral — Cinematic Color Grading",
+    description: "Two professional LUTs by MediaGeekz: Punchy for bold cinematic color and Neutral for clean Slog3 to Rec.709 conversion. Try them in-browser.",
     images: ["/og"],
   },
   verification: {
