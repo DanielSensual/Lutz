@@ -1,12 +1,13 @@
 import { PACKAGES } from "@/data/packages";
 import { PackageCard } from "@/components/PackageCard";
 import { LutPreviewEngine } from "@/components/LutPreviewEngine";
+import { ImageSlider } from "@/components/ImageSlider";
 
 export default function Home() {
   return (
-    <main id="main" className="relative min-h-screen">
+    <main id="main" className="relative min-h-screen bg-[#05060a] selection:bg-[var(--accent)] selection:text-white font-sans">
       {/* Hero Section */}
-      <section className="relative flex min-h-[90vh] flex-col items-center justify-center px-6 py-32 text-center overflow-hidden">
+      <section className="relative flex min-h-screen flex-col items-center justify-center px-6 py-40 text-center overflow-hidden">
         {/* Background Video */}
         <video
           src="/hero/banner.mp4"
@@ -14,294 +15,176 @@ export default function Home() {
           loop
           muted
           playsInline
-          className="absolute inset-0 h-full w-full object-cover opacity-70"
+          className="absolute inset-0 h-full w-full object-cover opacity-50 mix-blend-screen scale-105"
         />
-        {/* Dark Overlay Gradients */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/25 to-[var(--bg)]" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-black/20" />
+        {/* Dark Vignette Overlay */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#05060a_100%)] opacity-90" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#05060a]/60 via-[#05060a]/20 to-[#05060a]" />
 
-        {/* Gradient Orb */}
-        <div
-          className="pointer-events-none absolute top-0 left-1/2 h-[600px] w-[800px] opacity-30"
-          style={{
-            background: 'radial-gradient(ellipse at center, rgba(255, 92, 43, 0.25) 0%, transparent 70%)',
-            filter: 'blur(80px)',
-            transform: 'translateX(-50%)',
-          }}
-        />
-
-        <div className="relative z-10 container-center max-w-3xl px-6">
-          {/* Badge */}
-          <div className="fade-up inline-block rounded-full bg-[var(--accent-soft)] px-5 py-2.5 text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-[var(--accent-bright)]">
-            Professional Color Grading by MediaGeekz
+        <div className="relative z-10 container-center max-w-4xl px-6 flex flex-col items-center text-center">
+          <div className="fade-up inline-flex items-center gap-3 rounded-full border border-[var(--accent)]/20 bg-[var(--accent)]/[0.05] py-2 px-6 backdrop-blur-md mb-10 shadow-[0_0_20px_rgba(255,92,43,0.1)]">
+            <span className="flex h-1.5 w-1.5 rounded-full bg-[var(--accent)] animate-pulse shadow-[0_0_8px_var(--accent)]" />
+            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[var(--accent)]">The Secret to Cinematic Color</span>
           </div>
 
-          <h1 className="fade-up fade-up-delay-1 mt-8 text-5xl font-bold leading-[1.1] tracking-tight text-white sm:text-6xl md:text-7xl" style={{ textShadow: '0 4px 30px rgba(0, 0, 0, 0.8), 0 2px 10px rgba(0, 0, 0, 0.6)' }}>
-            Two Looks.
-            <br />
-            <span
-              className="inline-block transition-all duration-300 cursor-default hover:drop-shadow-[0_0_30px_rgba(251,146,60,0.9)]"
-              style={{
-                background: 'linear-gradient(to right, #fb923c, #f97316, #facc15)',
-                WebkitBackgroundClip: 'text',
-                backgroundClip: 'text',
-                color: 'transparent',
-                textShadow: 'none',
-              }}
-            >
-              Infinite Possibilities.
+          <h1 className="fade-up fade-up-delay-1 text-5xl font-black leading-[1.1] tracking-tighter text-white sm:text-7xl md:text-8xl drop-shadow-2xl uppercase max-w-4xl mx-auto">
+            Professional Grades.<br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--accent)] to-[#ffad85] drop-shadow-[0_0_30px_rgba(255,92,43,0.4)]">
+              Zero Guesswork.
             </span>
           </h1>
 
-          <p className="fade-up fade-up-delay-2 mt-8 text-lg leading-relaxed text-white/90" style={{ textShadow: '0 2px 20px rgba(0, 0, 0, 0.7)' }}>
-            <strong>Mediageekz Punchy</strong> for bold cinematic color and <strong>Mediageekz Neutral</strong> for clean Slog3→709 conversion. Try them on your own footage — right in the browser.
+          <p className="fade-up fade-up-delay-2 mt-10 text-xl md:text-2xl leading-relaxed text-white/60 max-w-2xl mx-auto font-light" style={{ textWrap: 'balance' }}>
+            Elevate your footage with the <strong className="font-medium text-white/90">Mediageekz Signature Collection.</strong> <br/>
+            Get the exact looks we use for high-end commercial and narrative work.
           </p>
 
-          <div className="fade-up fade-up-delay-3 mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-            <a href="#packages" className="btn-primary">
-              See the LUTs — $49 each
+          <div className="fade-up fade-up-delay-3 mt-16 flex flex-col items-center justify-center gap-6 sm:flex-row">
+            <a href="#collection" className="group relative inline-flex items-center justify-center gap-4 overflow-hidden rounded-full bg-white px-10 py-5 text-sm font-bold tracking-widest uppercase text-black transition-transform hover:scale-[1.03] shadow-[0_0_40px_rgba(255,255,255,0.1)]">
+              <span className="absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-10 bg-gradient-to-r from-[var(--accent)] to-transparent" />
+              Unlock The Collection
+              <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
-            <a href="#try-it" className="btn-secondary">
+            <a href="#try-it" className="inline-flex items-center justify-center gap-3 rounded-full border border-white/10 bg-white/[0.02] px-10 py-5 text-sm font-bold tracking-widest uppercase text-[var(--accent)] backdrop-blur-md transition-all hover:bg-[var(--accent)]/10 hover:border-[var(--accent)]/30">
               Try on Your Footage
             </a>
           </div>
         </div>
-
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 animate-bounce opacity-40" style={{ transform: 'translateX(-50%)' }}>
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M12 5v14M19 12l-7 7-7-7" />
-          </svg>
-        </div>
       </section>
 
-      {/* Packages Section — 2 Cards */}
-      <section id="packages" className="container-center max-w-5xl px-6 py-24">
-        <div className="text-center">
-          <span className="section-label">Choose Your Grade</span>
-          <h2 className="section-title">Two LUTs. Crafted for Filmmakers.</h2>
-          <p className="section-desc container-center">
-            Each LUT is hand-tuned by the MediaGeekz color team. Whether you need punchy cinematic impact or a clean broadcast base — we&apos;ve got you covered.
+      {/* Vertical Divider */}
+      <div className="w-px h-32 bg-gradient-to-b from-transparent via-[var(--accent)]/30 to-transparent mx-auto" />
+
+      {/* The Master Collection Breakdown */}
+      <section id="collection" className="relative container-center max-w-6xl px-6 py-40 z-10">
+        <div className="text-center mb-24 flex flex-col items-center">
+          <h2 className="text-5xl md:text-6xl font-black tracking-tighter text-white uppercase drop-shadow-lg">The Signature Collection</h2>
+          <p className="mt-8 text-sm text-[var(--accent)] font-bold uppercase tracking-[0.3em] max-w-md mx-auto leading-loose">
+            2 Premium LUTs <span className="mx-2 opacity-40 text-white">•</span> Instant Download <span className="mx-2 opacity-40 text-white">•</span> Lifetime Updates
           </p>
         </div>
 
-        <div className="mt-14 grid gap-8 sm:grid-cols-2 max-w-4xl container-center">
+        <div className="flex flex-col gap-32 relative w-full items-center">
           {PACKAGES.map((pack) => (
             <PackageCard key={pack.id} pack={pack} />
           ))}
         </div>
       </section>
 
+      {/* Vertical Divider */}
+      <div className="w-px h-32 bg-gradient-to-b from-transparent via-[var(--accent)]/30 to-transparent mx-auto" />
+
+      {/* Feature Focus / What's Included */}
+      <section className="relative bg-[#05060a] py-40 overflow-hidden">
+        <div className="container-center max-w-5xl px-6 relative z-10">
+          <div className="text-center max-w-3xl mx-auto mb-28 flex flex-col items-center">
+             <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tighter leading-[1.1]">
+               Everything You Need. <br/><span className="text-[var(--accent)] drop-shadow-[0_0_20px_rgba(255,92,43,0.3)]">Nothing You Don&apos;t.</span>
+             </h2>
+             <p className="mt-8 text-xl text-white/50 font-light max-w-2xl mx-auto" style={{ textWrap: 'balance' }}>
+               We stripped away the fluff and created two powerful tools that cover 99% of professional color grading scenarios.
+             </p>
+          </div>
+
+          <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-3">
+             <div className="flex flex-col items-center text-center p-8 rounded-3xl bg-white/[0.01] border border-[var(--accent)]/[0.05] transition-colors hover:bg-[var(--accent)]/[0.02] hover:border-[var(--accent)]/20 group">
+               <div className="text-4xl mb-8 drop-shadow-md grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500">🍿</div>
+               <h3 className="text-xl font-bold tracking-tight mb-4 uppercase text-white group-hover:text-[var(--accent)] transition-colors duration-500">Cinematic Contrast</h3>
+               <p className="text-white/50 font-light leading-relaxed">Punchy delivers a custom S-Curve that rolls off highlights perfectly while maintaining deep, rich shadows.</p>
+             </div>
+             <div className="flex flex-col items-center text-center p-8 rounded-3xl bg-white/[0.01] border border-[var(--accent)]/[0.05] transition-colors hover:bg-[var(--accent)]/[0.02] hover:border-[var(--accent)]/20 group">
+               <div className="text-4xl mb-8 drop-shadow-md grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500">🎯</div>
+               <h3 className="text-xl font-bold tracking-tight mb-4 uppercase text-white group-hover:text-[var(--accent)] transition-colors duration-500">True Skin Tones</h3>
+               <p className="text-white/50 font-light leading-relaxed">Built from the ground up to protect skin tones. No more muddy faces or weird shifts when pushing saturation.</p>
+             </div>
+             <div className="flex flex-col items-center text-center p-8 rounded-3xl bg-white/[0.01] border border-[var(--accent)]/[0.05] transition-colors hover:bg-[var(--accent)]/[0.02] hover:border-[var(--accent)]/20 group">
+               <div className="text-4xl mb-8 drop-shadow-md grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500">📺</div>
+               <h3 className="text-xl font-bold tracking-tight mb-4 uppercase text-white group-hover:text-[var(--accent)] transition-colors duration-500">Broadcast Ready</h3>
+               <p className="text-white/50 font-light leading-relaxed">Neutral provides a mathematically precise Rec.709 conversion straight from S-Log3. The perfect clean base.</p>
+             </div>
+             <div className="flex flex-col items-center text-center p-8 rounded-3xl bg-white/[0.01] border border-[var(--accent)]/[0.05] transition-colors hover:bg-[var(--accent)]/[0.02] hover:border-[var(--accent)]/20 group">
+               <div className="text-4xl mb-8 drop-shadow-md grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500">🎬</div>
+               <h3 className="text-xl font-bold tracking-tight mb-4 uppercase text-white group-hover:text-[var(--accent)] transition-colors duration-500">Industry Standard</h3>
+               <p className="text-white/50 font-light leading-relaxed">High-quality 33x33x33 .CUBE files. Works instantly in DaVinci Resolve, Premiere Pro, and Final Cut.</p>
+             </div>
+             <div className="flex flex-col items-center text-center p-8 rounded-3xl bg-white/[0.01] border border-[var(--accent)]/[0.05] transition-colors hover:bg-[var(--accent)]/[0.02] hover:border-[var(--accent)]/20 lg:col-span-2 justify-center group">
+               <div className="text-4xl mb-8 drop-shadow-md grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500">♾️</div>
+               <h3 className="text-2xl font-bold tracking-tight mb-4 uppercase text-white group-hover:text-[var(--accent)] transition-colors duration-500">Lifetime Access</h3>
+               <p className="text-white/50 font-light leading-relaxed max-w-lg mx-auto">Pay once. Keep them forever. You&apos;ll get free updates whenever we refine our color science and release new camera profiles.</p>
+             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Vertical Divider */}
+      <div className="w-px h-32 bg-gradient-to-b from-transparent via-[var(--accent)]/30 to-transparent mx-auto" />
+
+      {/* Visual Results Gallery */}
+      <section id="results" className="relative container-center max-w-6xl px-6 py-40 z-10 flex flex-col items-center">
+        <div className="text-center mb-20 flex flex-col items-center w-full">
+          <h2 className="text-5xl md:text-6xl font-black tracking-tighter text-white uppercase drop-shadow-lg">The Secret in Action</h2>
+          <p className="mt-8 text-sm text-[var(--accent)] font-bold uppercase tracking-[0.3em] max-w-md mx-auto leading-loose">
+            Drag the sliders to reveal the grade
+          </p>
+        </div>
+
+        <div className="grid gap-16 md:grid-cols-2 w-full max-w-5xl mx-auto">
+          <ImageSlider image="https://images.unsplash.com/photo-1542052125323-e69ad37a47c2?auto=format&fit=crop&q=80&w=2000" title="Punchy / Neon City" />
+          <ImageSlider image="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&q=80&w=2000" title="Neutral / Cinematic Red" />
+          <ImageSlider image="https://images.unsplash.com/photo-1502899576159-f224dc2349fa?auto=format&fit=crop&q=80&w=2000" title="Punchy / Golden Hour" />
+          <ImageSlider image="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&q=80&w=2000" title="Neutral / Interior Setup" />
+        </div>
+      </section>
+
+      {/* Vertical Divider */}
+      <div className="w-px h-32 bg-gradient-to-b from-transparent via-[var(--accent)]/30 to-transparent mx-auto" />
+
       {/* Try It — LUT Preview Engine */}
-      <section id="try-it" className="container-center max-w-5xl px-6 py-24">
-        <div className="text-center">
-          <span className="section-label">Try Before You Buy</span>
-          <h2 className="section-title">Preview on Your Own Footage</h2>
-          <p className="section-desc container-center">
-            Upload a short clip and see exactly how our LUTs transform your footage — all processed right in your browser. Nothing gets uploaded to any server.
+      <section id="try-it" className="relative container-center max-w-5xl px-6 py-40 z-10 flex flex-col items-center">
+        <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-20">
+          <div className="inline-flex items-center gap-3 rounded-full border border-[var(--accent)]/20 bg-[var(--accent)]/[0.05] py-2 px-6 backdrop-blur-md mb-10 shadow-[0_0_20px_rgba(255,92,43,0.1)]">
+            <span className="flex h-1.5 w-1.5 rounded-full bg-[var(--accent)] animate-pulse shadow-[0_0_8px_var(--accent)]" />
+            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[var(--accent)]">Interactive Viewer</span>
+          </div>
+          <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-[1.05]">
+            Stop Guessing. <br/><span className="text-[var(--accent)] drop-shadow-[0_0_20px_rgba(255,92,43,0.3)]">See The Results.</span>
+          </h2>
+          <p className="mt-8 text-xl text-white/50 font-light" style={{ textWrap: 'balance' }}>
+            Upload your own S-Log3 footage and see the exact transformation right here in your browser. 100% private, no server uploads.
           </p>
         </div>
 
-        <div className="mt-14">
-          <LutPreviewEngine />
+        <div className="w-full bg-white/[0.01] rounded-[2.5rem] p-4 sm:p-8 border border-[var(--accent)]/[0.1] shadow-[0_0_50px_rgba(255,92,43,0.05)]">
+           <LutPreviewEngine />
         </div>
       </section>
 
-      {/* About Our LUTs — Technical Section */}
-      <section className="container-center max-w-4xl px-6 py-24">
-        <div className="text-center">
-          <span className="section-label">The Technical Details</span>
-          <h2 className="section-title">Built for Professional Workflows</h2>
-        </div>
+      {/* Final CTA */}
+      <section className="relative flex flex-col items-center justify-center py-48 px-6 text-center overflow-hidden border-t border-[var(--accent)]/[0.05] bg-gradient-to-t from-[var(--accent)]/[0.02] to-transparent">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,var(--accent)_0%,transparent_100%)] opacity-[0.03]" />
+        
+        <h2 className="relative z-10 text-5xl sm:text-7xl md:text-8xl font-black uppercase tracking-tighter drop-shadow-2xl text-white">Upgrade Your Look.</h2>
+        <p className="relative z-10 mt-10 text-xl text-white/50 font-light mb-16 max-w-xl mx-auto" style={{ textWrap: 'balance' }}>
+          Join the creators using Mediageekz color science for their top-tier client work.
+        </p>
 
-        <div className="mt-14 grid gap-8 sm:grid-cols-2">
-          {/* Punchy */}
-          <div className="glass-panel rounded-[var(--radius-lg)] p-8">
-            <div className="flex items-center gap-3 mb-6">
-              <span className="h-3 w-3 rounded-full" style={{ background: '#ff5c2b' }} />
-              <h3 className="text-lg font-bold text-white">Mediageekz Punchy</h3>
-            </div>
-            <p className="text-sm leading-relaxed text-[var(--muted)] mb-6">
-              A custom S-curve contrast with selective saturation boost. Designed for narrative filmmaking, music videos, and premium content. Shadows are deep and rich, highlights roll off naturally, and skin tones are protected through the entire pipeline.
-            </p>
-            <div className="space-y-2">
-              {['Input: S-Log3, V-Log, C-Log', 'Output: Rec.709 (punched)', 'Custom S-curve contrast', 'Selective saturation boost (+15%)'].map((item, i) => (
-                <div key={i} className="flex items-center gap-2 text-xs text-[var(--muted)]">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#ff5c2b]" />
-                  <span className="font-mono">{item}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Neutral */}
-          <div className="glass-panel rounded-[var(--radius-lg)] p-8">
-            <div className="flex items-center gap-3 mb-6">
-              <span className="h-3 w-3 rounded-full" style={{ background: '#3b82f6' }} />
-              <h3 className="text-lg font-bold text-white">Mediageekz Neutral</h3>
-            </div>
-            <p className="text-sm leading-relaxed text-[var(--muted)] mb-6">
-              A precise base conversion from Sony S-Log3 / S-Gamut3.Cine to Rec.709. Delivers natural, broadcast-ready color with accurate white balance mapping. The perfect starting point before adding your own creative grade.
-            </p>
-            <div className="space-y-2">
-              {['Input: Sony S-Log3 / S-Gamut3.Cine', 'Output: Rec.709 (neutral)', 'Standard broadcast gamma curve', 'ACES-informed color mapping'].map((item, i) => (
-                <div key={i} className="flex items-center gap-2 text-xs text-[var(--muted)]">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#3b82f6]" />
-                  <span className="font-mono">{item}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* What's Included Section */}
-      <section className="container-center max-w-4xl px-6 py-32">
-        <div className="glass-panel rounded-[var(--radius-lg)] p-10 sm:p-14">
-          <div className="text-center">
-            <span className="section-label">Every purchase includes</span>
-            <h2 className="section-title">What&apos;s in the Box</h2>
-          </div>
-
-          <div className="mt-12 grid gap-10 sm:grid-cols-3">
-            {[
-              {
-                icon: "📦",
-                title: ".CUBE Files (33×33×33)",
-                desc: "Industry-standard 3D LUT format compatible with all major editing software."
-              },
-              {
-                icon: "📖",
-                title: "Install Guide",
-                desc: "Step-by-step setup for Premiere Pro, DaVinci Resolve, and Final Cut Pro."
-              },
-              {
-                icon: "♾️",
-                title: "Lifetime Access",
-                desc: "Download anytime. Free updates as we refine the color science."
-              }
-            ].map((item, i) => (
-              <div key={i} className="text-center">
-                <div className="inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-[var(--accent-soft)] text-3xl">
-                  {item.icon}
-                </div>
-                <h3 className="mt-5 text-lg font-semibold text-white">{item.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-[var(--muted)]">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonial Section */}
-      <section className="container-center max-w-4xl px-6 py-32">
-        <div className="text-center">
-          <span className="section-label">Real Results</span>
-          <h2 className="section-title">What Creators Say</h2>
-          <p className="section-desc container-center">
-            Join filmmakers using MediaGeekz LUTs to transform their footage.
-          </p>
-        </div>
-
-        {/* Video Testimonial */}
-        <div className="mt-14">
-          <div className="relative overflow-hidden rounded-2xl border border-white/[0.08] bg-black/40 shadow-2xl">
-            <div className="aspect-video">
-              <iframe
-                src="https://streamable.com/e/fk1lvr?autoplay=0&loop=0&muted=0&nocontrols=0"
-                className="h-full w-full"
-                allowFullScreen
-                allow="autoplay; fullscreen"
-              />
-            </div>
-            {/* Video Label */}
-            <div className="absolute left-4 top-4 z-10 flex items-center gap-2 rounded-full bg-black/60 px-3 py-1.5 backdrop-blur-sm">
-              <span className="h-2 w-2 rounded-full bg-[var(--accent)] animate-pulse" />
-              <span className="text-xs font-medium text-white">Video Testimonial</span>
-            </div>
-          </div>
-          {/* Client Attribution */}
-          <div className="mt-6 text-center">
-            <p className="text-base font-medium text-white">Erica Plazibat</p>
-            <p className="text-sm text-[var(--muted)]">Assistant Director, Quest Star</p>
-          </div>
-        </div>
-      </section>
-
-      {/* Divider */}
-      <div className="container-center max-w-xs">
-        <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-      </div>
-
-      {/* FAQ Section */}
-      <section className="container-center max-w-2xl px-6 py-32">
-        <div className="text-center">
-          <span className="section-label">Have Questions?</span>
-          <h2 className="section-title">Frequently Asked</h2>
-        </div>
-
-        <div className="mt-12 space-y-4">
-          {[
-            {
-              q: "What's the difference between Punchy and Neutral?",
-              a: "Mediageekz Punchy delivers a stylized cinematic grade with enhanced contrast and saturation — perfect for music videos, narrative content, and social media. Mediageekz Neutral is a clean Slog3 to Rec.709 base conversion that gives you broadcast-ready color as a starting point for your own creative grade."
-            },
-            {
-              q: "Do I need to shoot in S-Log3?",
-              a: "The LUTs are optimized for Sony S-Log3 footage, but they also work beautifully with V-Log (Panasonic), C-Log (Canon), and even standard Rec.709 footage. Results will always look best with LOG-format input."
-            },
-            {
-              q: "What software are these compatible with?",
-              a: "Both LUTs are standard .CUBE format (33×33×33) and work with Premiere Pro, DaVinci Resolve, Final Cut Pro, After Effects, and any application that supports .cube files."
-            },
-            {
-              q: "How does the in-browser preview work?",
-              a: "We use FFmpeg WebAssembly to process your video entirely on your device. Your footage never leaves your computer — it's 100% private. Just upload a short clip, pick a LUT, and see the result in seconds."
-            },
-            {
-              q: "Will these work with my camera?",
-              a: "Yes! LUTs are camera-agnostic. They work with footage from Sony, Canon, Panasonic, Blackmagic, RED, iPhone, and any other source. For best results, shoot in a LOG profile."
-            },
-            {
-              q: "Can I get a refund?",
-              a: "Due to the digital nature of these products, we don't offer refunds once downloaded. That's exactly why we built the in-browser preview — so you can try them on your own footage before buying."
-            }
-          ].map((faq, i) => (
-            <details key={i} className="group p-5">
-              <summary className="flex cursor-pointer items-center justify-between text-[15px] font-medium text-white">
-                <span>{faq.q}</span>
-                <span className="ml-4 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-[var(--accent-soft)] text-sm text-[var(--accent)] transition-transform duration-300 group-open:rotate-45">
-                  +
-                </span>
-              </summary>
-              <p className="mt-4 pr-10 text-sm leading-relaxed text-[var(--muted)]">
-                {faq.a}
-              </p>
-            </details>
-          ))}
-        </div>
+        <a href="#collection" className="relative z-10 group inline-flex items-center justify-center gap-4 rounded-full bg-[var(--accent)] px-12 py-6 text-sm font-bold tracking-widest uppercase text-white shadow-[0_0_40px_rgba(255,92,43,0.4)] transition-all hover:scale-[1.03] hover:shadow-[0_0_60px_rgba(255,92,43,0.6)] hover:bg-[#ff7a4d]">
+          Get Instant Access
+        </a>
       </section>
 
       {/* Footer */}
-      <footer className="mt-16 border-t border-white/[0.06] px-6 py-20 text-center">
-        <div className="container-center max-w-md">
-          <p className="text-2xl font-semibold text-white">
-            Ready to elevate your footage?
-          </p>
-          <a href="#packages" className="btn-primary mt-6 inline-flex">
-            Get Your LUTs — $49
-          </a>
-        </div>
-        <div className="mt-12 space-y-2">
-          <p className="text-sm text-[var(--muted)]">
-            © {new Date().getFullYear()} MediaGeekz. All rights reserved.
-          </p>
+      <footer className="bg-black px-6 py-16 text-center border-t border-[var(--accent)]/[0.05]">
+        <div className="container-center max-w-6xl flex flex-col items-center gap-8">
           <a
             href="https://mediageekz.com"
-            className="inline-block text-xs text-[var(--muted)] opacity-60 transition hover:text-white hover:opacity-100"
+            className="text-[10px] text-[var(--accent)]/60 font-bold uppercase tracking-[0.3em] hover:text-[var(--accent)] transition-colors"
           >
-            ← Back to MediaGeekz.com
+            MediaGeekz.com ↗
           </a>
+          <p className="text-[10px] text-white/30 font-bold tracking-[0.3em] uppercase">
+            © {new Date().getFullYear()} MediaGeekz. All rights reserved.
+          </p>
         </div>
       </footer>
     </main>
